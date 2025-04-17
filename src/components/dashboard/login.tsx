@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import dotenv from 'dotenv';
 import {
     MDBBtn,
     MDBContainer,
@@ -29,6 +28,12 @@ const Login: React.FC = () => {
         e.preventDefault();
         console.log('Email:', email);
         console.log('Password:', password);
+
+        // Simuler une connexion réussie
+        if (email && password) {
+            localStorage.setItem('userSession', 'valid'); // Stocker une session valide
+            navigate('/dashboard'); // Rediriger vers /dashboard
+        }
     };
 
     useEffect(() => {

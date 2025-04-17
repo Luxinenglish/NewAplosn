@@ -24,3 +24,4 @@ yarn-error.log*
 
 .env.local
 process.env
+fake-wazuh-api

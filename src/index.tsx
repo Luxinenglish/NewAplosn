@@ -6,6 +6,9 @@ import './index.css';
 import  NavBar from './components/footer-navbar/navbar';
 import Footer from './components/footer-navbar/footer';
 import Login from './components/dashboard/login';
+import Dashboard from './components/dashboard/App';
+import Wazuh from './components/dashboard/Wazuh';
+
 import reportWebVitals from './reportWebVitals';
 
 
@@ -22,6 +25,8 @@ root.render(
           <NavBar />
           <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<><Dashboard /><Wazuh /></>} />
+
           </Routes>
           <Footer />
       </Router>
