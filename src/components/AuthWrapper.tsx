@@ -6,14 +6,20 @@ const AuthWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const who = Cookies.get('who');
-        if (!who || !isValidWho(who)) {
+        const accountInfo = Cookies.get('accountInfo');
+        if (!accountInfo || !isValidAccountInfo(accountInfo)) {
             navigate('/login');
         }
     }, [navigate]);
 
-    const isValidWho = (who: string): boolean => {
-        return who === 'valid'; // Replace with your validation logic
+    const isValidAccountInfo = (accountInfo: string): boolean => {
+        try {
+            const decodedData = atob(accountInfo);
+            const [username, timestamp] = decodedData.split(':');
+            return !!username && !!timestamp && !isNaN(Number(timestamp));
+        } catch (error) {
+            return false;
+        }
     };
 
     return <>{children}</>;
