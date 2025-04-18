@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import {
     MDBBtn,
     MDBContainer,
@@ -31,7 +32,7 @@ const Login: React.FC = () => {
 
         // Simuler une connexion réussie
         if (email && password) {
-            localStorage.setItem('userSession', 'valid'); // Stocker une session valide
+            Cookies.set('who', 'valid', { expires: 7 }); // Stocker une session valide dans un cookie
             navigate('/dashboard'); // Rediriger vers /dashboard
         }
     };
